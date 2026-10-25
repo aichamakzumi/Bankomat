@@ -50,19 +50,19 @@ bool Bankomat::Withdraw(int amount)
 {
 	if (amount < this->minWithdraw || amount > this->maxWithdraw)
 	{
-		cout << "Помилка: сума повинна бути від " << this->minWithdraw << " до " << this->maxWithdraw << " грн." << endl;
+		cout << "Oshibka: summa dolzhna byt ot " << this->minWithdraw << " do " << this->maxWithdraw << "." << endl;
 		return false;
 	}
 
 	if (amount % 100 != 0)
 	{
-		cout << "Помилка: сума повинна бути кратною 100 грн." << endl;
+		cout << "Oshibka: summa dolzhna byt kratnoy 100." << endl;
 		return false;
 	}
 
 	if (amount > this->GetTotalMoney())
 	{
-		cout << "Помилка: недостатньо грошей у банкоматі." << endl;
+		cout << "Oshibka: nedostatochno deneg v bankomate." << endl;
 		return false;
 	}
 
@@ -98,7 +98,7 @@ bool Bankomat::Withdraw(int amount)
 
 	if (need != 0)
 	{
-		cout << "Помилка: неможливо видати потрібну суму наявними купюрами." << endl;
+		cout << "Oshibka: nevozmozhno vydat summu imeyuschimisya kupyurami." << endl;
 		return false;
 	}
 
@@ -107,22 +107,22 @@ bool Bankomat::Withdraw(int amount)
 	this->count200 -= take200;
 	this->count100 -= take100;
 
-	cout << "Успішно видано " << amount << " грн:" << endl;
+	cout << "Uspeshno vydano " << amount << ":" << endl;
 	if (take1000 > 0)
 	{
-		cout << "  1000 грн: " << take1000 << " шт." << endl;
+		cout << "  1000: " << take1000 << " sht." << endl;
 	}
 	if (take500 > 0)
 	{
-		cout << "  500 грн: " << take500 << " шт." << endl;
+		cout << "  500:  " << take500 << " sht." << endl;
 	}
 	if (take200 > 0)
 	{
-		cout << "  200 грн: " << take200 << " шт." << endl;
+		cout << "  200:  " << take200 << " sht." << endl;
 	}
 	if (take100 > 0)
 	{
-		cout << "  100 грн: " << take100 << " шт." << endl;
+		cout << "  100:  " << take100 << " sht." << endl;
 	}
 
 	return true;
@@ -130,10 +130,10 @@ bool Bankomat::Withdraw(int amount)
 
 string Bankomat::toString() const
 {
-	return to_string(this->GetTotalMoney()) + " грн (100 грн: " + to_string(this->count100) + 
-		" шт., 200 грн: " + to_string(this->count200) + 
-		" шт., 500 грн: " + to_string(this->count500) + 
-		" шт., 1000 грн: " + to_string(this->count1000) + " шт.)";
+	return to_string(this->GetTotalMoney()) + " (100: " + to_string(this->count100) + 
+		" sht, 200: " + to_string(this->count200) + 
+		" sht, 500: " + to_string(this->count500) + 
+		" sht, 1000: " + to_string(this->count1000) + " sht)";
 }
 
 int Bankomat::GetId() const
